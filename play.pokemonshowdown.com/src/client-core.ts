@@ -258,6 +258,11 @@ export const PSBackground = new class extends PSStreamModel<string | null> {
 				title: 'Charizards',
 				artist: 'Jessica Valencia',
 			};
+			attrib = {
+          	url: 'https://cdn.discordapp.com/attachments/864227687651606578/983140965453795378/client-bg-necrozma.jpg',
+          	title: 'Necrozma',
+          	artist: 'Jessica Valencia',
+       		};
 			break;
 		case 'digimon':
 			menuColors = [

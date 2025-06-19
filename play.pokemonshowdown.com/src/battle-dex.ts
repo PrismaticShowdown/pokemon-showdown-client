@@ -229,11 +229,8 @@ export const Dex = new class implements ModdedDex {
 
 	pokeballs: string[] | null = null;
 
-	resourcePrefix = (() => {
-		let prefix = '';
-		if (window.document?.location?.protocol !== 'http:') prefix = 'https:';
-		return `${prefix}//${window.Config ? Config.routes.client : 'play.pokemonshowdown.com'}/`;
-	})();
+	resourcePrefix = 'https://raw.githubusercontent.com/PrismaticShowdown/prismatic-sprites/master/'
+
 
 	fxPrefix = (() => {
 		const protocol = (window.document?.location?.protocol !== 'http:') ? 'https:' : '';
@@ -795,34 +792,16 @@ export const Dex = new class implements ModdedDex {
 	}
 
 	getPokemonIcon(pokemon: string | Pokemon | ServerPokemon | Dex.PokemonSet | null, facingLeft?: boolean) {
-		if (pokemon === 'pokeball') {
-			return `background:transparent url(${Dex.resourcePrefix}sprites/pokemonicons-pokeball-sheet.png) no-repeat scroll -0px 4px`;
-		} else if (pokemon === 'pokeball-statused') {
-			return `background:transparent url(${Dex.resourcePrefix}sprites/pokemonicons-pokeball-sheet.png) no-repeat scroll -40px 4px`;
-		} else if (pokemon === 'pokeball-fainted') {
-			return `background:transparent url(${Dex.resourcePrefix}sprites/pokemonicons-pokeball-sheet.png) no-repeat scroll -80px 4px;opacity:.4;filter:contrast(0)`;
-		} else if (pokemon === 'pokeball-none') {
-			return `background:transparent url(${Dex.resourcePrefix}sprites/pokemonicons-pokeball-sheet.png) no-repeat scroll -80px 4px`;
-		}
-
-		let id = toID(pokemon);
-		if (!pokemon || typeof pokemon === 'string') pokemon = null;
-		// @ts-expect-error safe, but too lazy to cast
-		if (pokemon?.speciesForme) id = toID(pokemon.speciesForme);
-		// @ts-expect-error safe, but too lazy to cast
-		if (pokemon?.species) id = toID(pokemon.species);
-		// @ts-expect-error safe, but too lazy to cast
-		if (pokemon?.volatiles?.formechange && !pokemon.volatiles.transform) {
-			// @ts-expect-error safe, but too lazy to cast
-			id = toID(pokemon.volatiles.formechange[1]);
-		}
-		let num = this.getPokemonIconNum(id, pokemon?.gender === 'F', facingLeft);
-
-		let top = Math.floor(num / 12) * 30;
-		let left = (num % 12) * 40;
-		let fainted = ((pokemon as Pokemon | ServerPokemon)?.fainted ?
-			`;opacity:.3;filter:grayscale(100%) brightness(.5)` : ``);
-		return `background:transparent url(${Dex.resourcePrefix}sprites/pokemonicons-sheet.png?v18) no-repeat scroll -${left}px -${top}px${fainted}`;
+		var id=toID(pokemon);
+		let iconName = String(pokemon)
+			.toLowerCase()
+			.split(' ').join('')
+			.split('.').join('')
+			.split('é').join('e')
+			.split('’').join('')
+			+ '.png';
+		let fainted = ((pokemon as Pokemon | ServerPokemon)?.fainted ? `;opacity:.3;filter:grayscale(100%) brightness(.5)` : ``);
+		return 'background:transparent url('+'https://raw.githubusercontent.com/PrismaticShowdown/prismatic-sprites/master/'+'sprites/icons/'+iconName+') no-repeat'+fainted;
 	}
 
 	getTeambuilderSpriteData(pokemon: any, dex: ModdedDex = Dex): TeambuilderSpriteData {
