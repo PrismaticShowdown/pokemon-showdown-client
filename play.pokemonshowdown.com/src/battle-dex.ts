@@ -792,28 +792,34 @@ export const Dex = new class implements ModdedDex {
 	}
 
 	getPokemonIcon(pokemon: string | Pokemon | ServerPokemon | Dex.PokemonSet | null, facingLeft?: boolean) {
-	let name: string;
+	if (!pokemon) return '';
 
-	if (!pokemon) return ''; // fallback or blank
+	let name: string;
 
 	if (typeof pokemon === 'string') {
 		name = pokemon;
-	} else if ('name' in pokemon && typeof pokemon.name === 'string') {
-		name = pokemon.name;
-	} else if ('species' in pokemon && typeof pokemon.species === 'string') {
-		name = pokemon.species;
+	} else if (typeof pokemon === 'object') {
+		// Try all known properties that might hold the name
+		name =
+			(pokemon as any).name ??
+			(pokemon as any).species ??
+			(pokemon as any).baseSpecies ??
+			(pokemon as any).pokemon ??
+			(pokemon as any).id ??
+			'unknown';
 	} else {
-		name = String(pokemon); // last resort
+		name = String(pokemon);
 	}
 
 	let iconName = name
 		.toLowerCase()
-		.replace(/[^a-z0-9-]/g, '') // removes spaces, dots, apostrophes, etc.
-		.normalize('NFD').replace(/[\u0300-\u036f]/g, '') + '.png';
+		.replace(/[^a-z0-9-]/g, '') // remove special characters
+		.normalize('NFD')           // remove accents
+		.replace(/[\u0300-\u036f]/g, '') + '.png';
 
-	let fainted = (pokemon as Pokemon | ServerPokemon)?.fainted
+	const fainted = (pokemon as any)?.fainted
 		? `;opacity:.3;filter:grayscale(100%) brightness(.5)`
-		: ``;
+		: '';
 
 	return `background:transparent url(https://raw.githubusercontent.com/PrismaticShowdown/prismatic-sprites/master/sprites/icons/${iconName}) no-repeat${fainted}`;
 }
