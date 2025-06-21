@@ -792,17 +792,32 @@ export const Dex = new class implements ModdedDex {
 	}
 
 	getPokemonIcon(pokemon: string | Pokemon | ServerPokemon | Dex.PokemonSet | null, facingLeft?: boolean) {
-		var id=toID(pokemon);
-		let iconName = String(pokemon)
-			.toLowerCase()
-			.split(' ').join('')
-			.split('.').join('')
-			.split('é').join('e')
-			.split('’').join('')
-			+ '.png';
-		let fainted = ((pokemon as Pokemon | ServerPokemon)?.fainted ? `;opacity:.3;filter:grayscale(100%) brightness(.5)` : ``);
-		return 'background:transparent url('+'https://raw.githubusercontent.com/PrismaticShowdown/prismatic-sprites/master/'+'sprites/icons/'+iconName+') no-repeat'+fainted;
+	let name: string;
+
+	if (!pokemon) return ''; // fallback or blank
+
+	if (typeof pokemon === 'string') {
+		name = pokemon;
+	} else if ('name' in pokemon && typeof pokemon.name === 'string') {
+		name = pokemon.name;
+	} else if ('species' in pokemon && typeof pokemon.species === 'string') {
+		name = pokemon.species;
+	} else {
+		name = String(pokemon); // last resort
 	}
+
+	let iconName = name
+		.toLowerCase()
+		.replace(/[^a-z0-9-]/g, '') // removes spaces, dots, apostrophes, etc.
+		.normalize('NFD').replace(/[\u0300-\u036f]/g, '') + '.png';
+
+	let fainted = (pokemon as Pokemon | ServerPokemon)?.fainted
+		? `;opacity:.3;filter:grayscale(100%) brightness(.5)`
+		: ``;
+
+	return `background:transparent url(https://raw.githubusercontent.com/PrismaticShowdown/prismatic-sprites/master/sprites/icons/${iconName}) no-repeat${fainted}`;
+}
+
 
 	getTeambuilderSpriteData(pokemon: any, dex: ModdedDex = Dex): TeambuilderSpriteData {
 		let gen = dex.gen;
