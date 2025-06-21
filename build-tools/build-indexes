@@ -577,14 +577,17 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			return ["CAP", "CAP NFE", "CAP LC", "AG", "Uber", "(Uber)", "OU", "OUBL", "(OU)", "UUBL", "UU", "RUBL", "RU", "NUBL", "NU", "PUBL", "PU", "ZUBL", "ZU", "IBL", "DI", "IIBL", "DII", "IIIBL", "DIII", "IVBL", "DIV", "VBL", "DV", "VIBL", "DVI", "VIIBL", "DVII", "VIIIBL", "DVIII", "IXBL", "DIX", "XBL", "DX", "XIBL", "DXI", "XIIBL", "DXII", "(DXII)", "New", "NFE", "LC", "Unreleased"];
 		})();
 
-		for (const format of Dex.formats.all()) {
+	const tables = {};
+	const slices = {};
+
+	for (const format of Dex.formats.all()) {
 	if (!format.searchShow || format.searchShow === 'hidden' || format.effectType !== 'Format') continue;
 
 	const formatName = format.name;
 	const bannedTiers = new Set(format.banlist || []);
 
 	for (const tier of tierOrder) {
-		if (bannedTiers.has(tier)) continue; // 🚫 Skip banned tiers
+		if (bannedTiers.has(tier)) continue; // Skip banned tiers
 
 		if (!tierTable[tier]) continue;
 
