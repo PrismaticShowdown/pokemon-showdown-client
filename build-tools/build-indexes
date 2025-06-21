@@ -577,45 +577,26 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			return ["CAP", "CAP NFE", "CAP LC", "AG", "Uber", "(Uber)", "OU", "OUBL", "(OU)", "UUBL", "UU", "RUBL", "RU", "NUBL", "NU", "PUBL", "PU", "ZUBL", "ZU", "IBL", "DI", "IIBL", "DII", "IIIBL", "DIII", "IVBL", "DIV", "VBL", "DV", "VIBL", "DVI", "VIIBL", "DVII", "VIIIBL", "DVIII", "IXBL", "DIX", "XBL", "DX", "XIBL", "DXI", "XIIBL", "DXII", "(DXII)", "New", "NFE", "LC", "Unreleased"];
 		})();
 
-		for (const currentFormat of formats) {
-	const tierOrder = Object.keys(tierTable).sort();
-
-	for (const tier of tierOrder) {
-		// Skip banned tiers for the current format
-		if (currentFormat.banlist?.includes(tier)) continue;
-
-		if (!tierTable[tier]) continue;
-
-		// Track tier slice if needed
-		if (tier in {
-			DI: 1, DII: 1, DIII: 1, DIV: 1, DV: 1, DVI: 1, DVII: 1, DVIII: 1, DIX: 1, DX: 1, DXI: 1, DXII: 1,
-			OU: 1, AG: 1, Uber: 1, UU: 1, RU: 1, NU: 1, PU: 1, ZU: 1,
-			NFE: 1, LC: 1,
-			DOU: 1, DUU: 1, "(DUU)": 1,
-			New: 1, Legal: 1, Regular: 1, "Restricted Legendary": 1, "CAP LC": 1
-		}) {
-			let usedTier = tier;
-			if (usedTier === "(DUU)") usedTier = "DNU";
-			formatSlices[usedTier] = tiers.length;
+		for (const tier of tierOrder) {
+			if (tier in {DI: 1, DII: 1, DIII: 1, DIV: 1, DV: 1, DVI: 1, DVII: 1, DVIII: 1, DIX: 1, DX: 1, DXI: 1, DXII: 1, OU:1, AG:1, Uber:1, UU:1, RU:1, NU:1, PU:1, ZU: 1, NFE:1, LC:1, DOU:1, DUU:1, "(DUU)":1, New:1, Legal:1, Regular:1, "Restricted Legendary":1, "CAP LC":1}) {
+				let usedTier = tier;
+				if (usedTier === "(DUU)") usedTier = "DNU";
+				formatSlices[usedTier] = tiers.length;
+			}
+			if (!tierTable[tier]) continue;
+			if (tier === "(PU)") {
+				tiers.push(['header', "Below PU"]);
+			} else if (tier === "(DUU)") {
+				tiers.push(['header', "Below DUU"]);
+			} else if (tier.charAt(0) === '(') {
+				tiers.push(['header', tier.slice(1, -1) + " by technicality"]);
+			} else if (tier === "NFE") {
+				tiers.push(['header', "NFEs not in a higher tier"]);
+			} else {
+				tiers.push(['header', tier]);
+			}
+			tiers.push(...tierTable[tier]);
 		}
-
-		// Add header based on tier
-		if (tier === "(PU)") {
-			tiers.push(['header', "Below PU"]);
-		} else if (tier === "(DUU)") {
-			tiers.push(['header', "Below DUU"]);
-		} else if (tier.charAt(0) === '(') {
-			tiers.push(['header', tier.slice(1, -1) + " by technicality"]);
-		} else if (tier === "NFE") {
-			tiers.push(['header', "NFEs not in a higher tier"]);
-		} else {
-			tiers.push(['header', tier]);
-		}
-
-		tiers.push(...tierTable[tier]);
-	}
-}
-
 		/*if (!isDoubles) {
 			if (!formatSlices['OU']) formatSlices['OU'] = formatSlices['New'];
 			if (!formatSlices['UU']) formatSlices['UU'] = formatSlices['New'];
