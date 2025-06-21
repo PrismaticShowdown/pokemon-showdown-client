@@ -574,7 +574,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			if (gen === 'gen4') {
 				return ["CAP", "CAP NFE", "CAP LC", "AG", "Uber", "OU", "(OU)", "UUBL", "UU", "NUBL", "NU", "NFE", "LC"];
 			}
-			return ["CAP", "CAP NFE", "CAP LC", "DI", "IIBL", "DII", "IIIBL", "DIII", "IVBL", "DIV", "VBL", "DV", "VIBL", "DVI", "VIIBL", "DVII", "VIIIBL", "DVIII", "IXBL", "DIX", "XBL", "DX", "XIBL", "DXI", "XIIBL", "DXII", "(DXII)", "AG", "Uber", "IBL", "(Uber)", "OU", "(OU)", "UUBL", "UU", "RUBL", "RU", "NUBL", "NU", "PUBL", "PU", "ZUBL", "ZU", "New", "NFE", "LC", "Unreleased"];
+			return ["CAP", "CAP NFE", "CAP LC", "AG", "Uber", "(Uber)", "OU", "OUBL", "(OU)", "UUBL", "UU", "RUBL", "RU", "NUBL", "NU", "PUBL", "PU", "ZUBL", "ZU", "IBL", "DI", "IIBL", "DII", "IIIBL", "DIII", "IVBL", "DIV", "VBL", "DV", "VIBL", "DVI", "VIIBL", "DVII", "VIIIBL", "DVIII", "IXBL", "DIX", "XBL", "DX", "XIBL", "DXI", "XIIBL", "DXII", "(DXII)", "New", "NFE", "LC", "Unreleased"];
 		})();
 
 		for (const tier of tierOrder) {
