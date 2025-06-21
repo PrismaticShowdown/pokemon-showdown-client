@@ -794,22 +794,31 @@ export const Dex = new class implements ModdedDex {
 	getPokemonIcon(pokemon: string | any, facingLeft?: boolean) {
 	if (!pokemon) return '';
 
-	let name = '';
+	let name: string;
 
+	// Handle string input (e.g., "Naveast")
 	if (typeof pokemon === 'string') {
 		name = pokemon;
-	} else if (typeof pokemon === 'object') {
-		// Use 'species' or 'name' field from PokemonSet objects
-		name = pokemon.species || pokemon.name || '';
+	}
+	// Handle object input
+	else if (typeof pokemon === 'object') {
+		// Use species, name, or fallback to id
+		name = pokemon.species || pokemon.name || pokemon.id || '';
+	} else {
+		return '';
 	}
 
+	// Normalize the name
 	let iconName = name
 		.toLowerCase()
-		.replace(/[^a-z0-9\-]/g, '') // keep only safe characters
-		.normalize('NFD')            // remove accents
+		.replace(/[^a-z0-9\-]/g, '') // remove spaces, dots, etc.
+		.normalize('NFD') // remove accents
 		.replace(/[\u0300-\u036f]/g, '') + '.png';
 
-	let fainted = (pokemon.fainted ? `;opacity:.3;filter:grayscale(100%) brightness(.5)` : ``);
+	// Optional fainted effect
+	let fainted = pokemon.fainted ? ';opacity:.3;filter:grayscale(100%) brightness(.5)' : '';
+
+	// Return full icon style string
 	return `background:transparent url(https://raw.githubusercontent.com/PrismaticShowdown/prismatic-sprites/master/sprites/icons/${iconName}) no-repeat${fainted}`;
 }
 
