@@ -577,42 +577,40 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			}
 			return ["CAP", "CAP NFE", "CAP LC", "AG", "Uber", "(Uber)", "OU", "OUBL", "(OU)", "UUBL", "UU", "RUBL", "RU", "NUBL", "NU", "PUBL", "PU", "ZUBL", "ZU", "IBL", "DI", "IIBL", "DII", "IIIBL", "DIII", "IVBL", "DIV", "VBL", "DV", "VIBL", "DVI", "VIIBL", "DVII", "VIIIBL", "DVIII", "IXBL", "DIX", "XBL", "DX", "XIBL", "DXI", "XIIBL", "DXII", "(DXII)", "New", "NFE", "LC", "Unreleased"];
 		})();
-		
-const tables = {};
-const itemsTable = {};
-const formats = Dex.formats.all();
 
-for (const format of formats) {
-	if (!format || !format.id) continue;
-
-	const bannedTiers = new Set(format.banlist || []);
-	const tiers = [];
-	const items = [];
-	const formatSlices = {};
-
-	for (const tier of tierOrder) {
-		if (bannedTiers.has(tier)) continue;
-
-		if (!tierTable[tier]) continue;
-
-		if (tier === "(PU)") {
-			tiers.push(['header', "Below PU"]);
-		} else if (tier === "(DUU)") {
-			tiers.push(['header', "Below DUU"]);
-		} else if (tier.charAt(0) === '(') {
-			tiers.push(['header', tier.slice(1, -1) + " by technicality"]);
-		} else if (tier === "NFE") {
-			tiers.push(['header', "NFEs not in a higher tier"]);
-		} else {
-			tiers.push(['header', tier]);
+for (const tier of tierOrder) {
+			if (tier in {
+		DI: 1, DII: 1, DIII: 1, DIV: 1, DV: 1, DVI: 1, DVII: 1, DVIII: 1, DIX: 1,
+		OU: 1, AG: 1, Uber: 1, UU: 1, RU: 1, NU: 1, PU: 1, ZU: 1,
+		NFE: 1, LC: 1, DOU: 1, DUU: 1, "(DUU)": 1, New: 1, Legal: 1,
+		Regular: 1, "Restricted Legendary": 1, "CAP LC": 1
+	}) {
+				let usedTier = tier;
+				if (usedTier === "(DUU)") usedTier = "DNU";
+				formatSlices[usedTier] = tiers.length;
+			}
+			if (!tierTable[tier]) continue;
+			if (tier === "(PU)") {
+				tiers.push(['header', "Below PU"]);
+			} else if (tier === "(DUU)") {
+				tiers.push(['header', "Below DUU"]);
+			} else if (tier.charAt(0) === '(') {
+				tiers.push(['header', tier.slice(1, -1) + " by technicality"]);
+			} else if (tier === "NFE") {
+				tiers.push(['header', "NFEs not in a higher tier"]);
+			} else {
+				tiers.push(['header', tier]);
+			}
+			tiers.push(...tierTable[tier]);
 		}
-
-		tiers.push(...tierTable[tier]);
-	}
-
-	tables[format.id] = tiers;
-	itemsTable[format.id] = items;
-}
+		if (!isDoubles) {
+			if (!formatSlices['OU']) formatSlices['OU'] = formatSlices['New'];
+			if (!formatSlices['UU']) formatSlices['UU'] = formatSlices['New'];
+			if (!formatSlices['RU']) formatSlices['RU'] = formatSlices['New'];
+		} else {
+			if (!formatSlices['DOU']) formatSlices['DOU'] = formatSlices['New'];
+			if (!formatSlices['DUU']) formatSlices['DUU'] = formatSlices['New'];
+		}
 
 
 		const itemList = Object.keys(Dex.data.Items);
