@@ -577,6 +577,32 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			}
 			return ["CAP", "CAP NFE", "CAP LC", "AG", "Uber", "(Uber)", "OU", "OUBL", "(OU)", "UUBL", "UU", "RUBL", "RU", "NUBL", "NU", "PUBL", "PU", "ZUBL", "ZU", "IBL", "DI", "IIBL", "DII", "IIIBL", "DIII", "IVBL", "DIV", "VBL", "DV", "VIBL", "DVI", "VIIBL", "DVII", "VIIIBL", "DVIII", "IXBL", "DIX", "XBL", "DX", "XIBL", "DXI", "XIIBL", "DXII", "(DXII)", "New", "NFE", "LC", "Unreleased"];
 		})();
+		const divisions = [
+  'DI', 'DII', 'DIII', 'DIV', 'DV', 'DVI',
+  'DVII', 'DVIII', 'DIX', 'DX', 'DXI', 'DXII'
+];
+
+const blTiers = {
+  DI: 'IBL',
+  DII: 'IIBL',
+  DIII: 'IIIBL',
+  DIV: 'IVBL',
+  DV: 'VBL',
+  DVI: 'VIBL',
+  DVII: 'VIIBL',
+  DVIII: 'VIIIBL',
+  DIX: 'IXBL',
+  DX: 'XBL',
+  DXI: 'XIBL',
+  DXII: 'XIIBL',
+};
+
+const formatLegalTiers = {};
+for (let i = 0; i < divisions.length; i++) {
+  const formatId = 'gen9' + divisions[i].toLowerCase();
+  formatLegalTiers[formatId] = new Set(divisions.slice(i)); // division and all below
+}
+
 for (const division of divisions) {
   const formatId = 'gen9' + division.toLowerCase();
   const allowedTiers = formatLegalTiers[formatId];
