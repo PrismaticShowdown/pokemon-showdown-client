@@ -1098,6 +1098,18 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 				});
 			}
 		} else if (format === 'ou') tierSet = tierSet.slice(slices.OU);
+		else if (format === 'di') tierSet = tierSet.slice(slices.DI);
+		else if (format === 'dii') tierSet = tierSet.slice(slices.DII);
+		else if (format === 'diii') tierSet = tierSet.slice(slices.DIII);
+		else if (format === 'div') tierSet = tierSet.slice(slices.DIV);
+		else if (format === 'dv') tierSet = tierSet.slice(slices.DV);
+		else if (format === 'dvi') tierSet = tierSet.slice(slices.DVI);
+		else if (format === 'dvii') tierSet = tierSet.slice(slices.DVII);
+		else if (format === 'dviii') tierSet = tierSet.slice(slices.DVIII);
+		else if (format === 'dix') tierSet = tierSet.slice(slices.DIX);
+		else if (format === 'dx') tierSet = tierSet.slice(slices.DX);
+		else if (format === 'dxi') tierSet = tierSet.slice(slices.DXI);
+		else if (format === 'dxii') tierSet = tierSet.slice(slices.DXII);
 		else if (format === 'uubl') tierSet = tierSet.slice(slices.UUBL);
 		else if (format === 'uu') tierSet = tierSet.slice(slices.UU);
 		else if (format === 'ru') tierSet = tierSet.slice(slices.RU || slices.UU);
