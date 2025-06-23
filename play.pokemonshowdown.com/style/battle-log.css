@@ -212,8 +212,8 @@ select.button {
 .button.cur:hover,
 .button.cur:disabled,
 .button.cur:disabled:hover {
-	background: #f8f8f8;
-	color: #5fcdce;
+	background: #3ddddf;
+	color: white;
 	border-color: #3b9b96;
 }
 
