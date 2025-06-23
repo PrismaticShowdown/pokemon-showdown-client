@@ -2285,8 +2285,8 @@ p.or:after {
 }
 .teambar button {
 	display: block;
-	background: #F3F3F3;
-	color: black;
+	background: #5A6570;
+	color: #F1F1F1;
 	border: 1px solid #AAAAAA;
 	padding: 0;
 	margin: -1px 2px 0 0;
@@ -2397,8 +2397,8 @@ p.or:after {
 	box-shadow: inset 1px 1px 0 rgba(255,255,255,.6);
 }
 .setchart {
-	border: 1px solid #5A6570;
-	background: #DAE5F0 no-repeat scroll 10px 5px none;
+	border: 1px solid #999999;
+	background: #5A6570 no-repeat scroll 10px 5px none;
 	border-radius: 5px;
 	padding: 2px 0 0 3px;
 	height: 127px;
