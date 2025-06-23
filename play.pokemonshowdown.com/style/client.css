@@ -132,8 +132,8 @@ select {
 	right: 0;
 	bottom: -6px;
 	height: 6px;
-	background: #f8f8f8;
-	border: solid 1px #AAAAAA;
+	background: #3ddddf;
+	border: solid 1px #44b5af;
 	border-left: 0;
 	border-right: 0;
 	margin: -1px 0 0 0;
@@ -1037,8 +1037,8 @@ p.or:after {
 	right: 0;
 	bottom: 40px;
 	font-size: 10pt;
-	background: rgba(242,247,250,.5);
-	color: black;
+	background: rgb(70 70 70 / 50%);
+	color: white;
 
 	overflow: auto;
 	overflow-x: hidden;
@@ -1052,7 +1052,7 @@ p.or:after {
 	right: 0;
 	min-height: 36px;
 	padding: 3px 4px 0 4px;
-	border-top: 1px solid #AAAAAA;
+	border-top: 1px solid #3ddddf;
 }
 .chat-log .notice,
 .chat-log .chat,
