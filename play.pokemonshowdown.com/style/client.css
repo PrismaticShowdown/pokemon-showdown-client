@@ -44,7 +44,7 @@ select {
 
 .dark .tabbar a.button,
 .dark .tabbar a.button:hover {
-	box-shadow: inset 0.5px 1px 1px rgba(255, 255, 255, 0.5);
+	box-shadow: inset 0.5px 1px 1px rgba(105, 235, 255, 0.5);
 }
 .dark .tabbar a.button:active,
 .dark .tabbar a.button.cur,
