@@ -403,15 +403,15 @@ select.button {
 	font-weight: normal;
 }
 .textbox {
-	border: 1px solid #AAAAAA;
+	border: 1px solid #6b7178;
 	border-radius: 3px;
 	padding: 2px 3px;
 	font-family: Verdana, Helvetica, Arial, sans-serif;
 	font-size: 9pt;
 
-	box-shadow: inset 0px 1px 2px #CCCCCC, 1px 1px 0 rgba(255,255,255,.6);
-	background: #F8FBFD;
-	color: black;
+	box-shadow: inset 0px 1px 2px #606060, 1px 1px 0 rgba(0,0,0,1);
+	background: #222527;
+	color: #DDD;
 }
 pre.textbox {
 	white-space: pre-wrap;
