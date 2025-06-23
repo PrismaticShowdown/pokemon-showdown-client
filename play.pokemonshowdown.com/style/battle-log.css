@@ -130,17 +130,16 @@ button:disabled {
 	border-radius: 5px;
 	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2), inset 0 -1px 2px rgba(255,255,255,1);
 	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2), inset 0 -1px 2px rgba(255,255,255,1);
-	box-shadow: 0 1px 2px rgba(0,0,0,.2), inset 0 -1px 2px rgba(255,255,255,1);
+	box-shadow: none;
 	border-radius: 5px;
 	font-family: Verdana, Helvetica, Arial, sans-serif;
 	display: inline-block;
 
 	/* default colors */
-	color: #222222;
-	text-shadow: 0 1px 0 white;
-	border: 1px solid #AAAAAA;
-	background: #e3e3e3;
-	background: linear-gradient(to bottom,  #f6f6f6,  #d3d3d3);
+	color: white;
+	text-shadow: none;
+	border: 1px solid #3b9b96;
+	background: #44b5af;
 
 	font-size: 9pt;
 	padding: 3px 8px;
@@ -214,8 +213,8 @@ select.button {
 .button.cur:disabled,
 .button.cur:disabled:hover {
 	background: #f8f8f8;
-	color: #444444;
-	border-color: #AAAAAA;
+	color: #5fcdce;
+	border-color: #3b9b96;
 }
 
 .button-first, .button-middle {
