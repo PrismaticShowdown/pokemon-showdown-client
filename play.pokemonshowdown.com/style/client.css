@@ -375,7 +375,7 @@ summary:hover .expandbutton,
 	right: 0;
 	bottom: 0;
 
-	border-left: 1px solid #AAAAAA;
+	border-left: 1px solid #5A5A5A;
 	margin-left: -1px;
 }
 .scrollable {
@@ -383,12 +383,12 @@ summary:hover .expandbutton,
 	-webkit-overflow-scrolling: touch;
 }
 .ps-room.ps-room-light {
-	background: rgba(0, 0, 0, 0.85);
-	color: white;
+	background: rgba(0,0,0,.70);
+	color: #DDD;
 }
 .ps-room.ps-room-opaque {
 	background: rgb(61 61 61 / 50%);
-	color: white;
+	color: #DDD;
 }
 
 .ps-overlay {

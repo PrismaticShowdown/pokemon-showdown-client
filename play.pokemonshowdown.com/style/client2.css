@@ -575,12 +575,12 @@ summary:hover .expandbutton,
 	overscroll-behavior-block: contain;
 }
 .ps-room.ps-room-light, .ps-room-light {
-	background: rgba(242,247,250,.85);
-	color: black;
+	background: rgba(0,0,0,.70);
+	color: #DDD;
 }
 .ps-room.ps-room-opaque, .ps-room-opaque {
-	background: #EEF2F5;
-	color: black;
+	background: rgb(61 61 61 / 50%);
+	color: #DDD;
 }
 
 .ps-overlay {
