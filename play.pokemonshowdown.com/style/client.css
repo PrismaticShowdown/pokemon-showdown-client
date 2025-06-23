@@ -2110,7 +2110,7 @@ p.or:after {
 .folderlistafter:before,
 .folderlistbefore:before {
 	display: table-cell;
-	background: #d7e3ec;
+	background: #484848;
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -2129,8 +2129,8 @@ p.or:after {
 	padding: 13px 0 0 0;
 	height: 17px;
 	font-size: 9pt;
-	background: #d7e3ec;
-	color: black;
+	background: #484848;
+	color: white;
 	border-right: 1px solid #888888;
 }
 .folderpane .text {
