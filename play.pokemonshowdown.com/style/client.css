@@ -397,8 +397,8 @@ summary:hover .expandbutton,
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: #CCCCCC;
-	background: rgba(212, 212, 212, .5);
+	background: black;
+	background: rgba(0,0,0,.70);
 
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
