@@ -132,8 +132,8 @@ select {
 	right: 0;
 	bottom: -6px;
 	height: 6px;
-	background: #3ddddf;
-	border: solid 1px #44b5af;
+	background: #f8f8f8;
+	border: solid 1px #AAAAAA;
 	border-left: 0;
 	border-right: 0;
 	margin: -1px 0 0 0;
@@ -375,7 +375,7 @@ summary:hover .expandbutton,
 	right: 0;
 	bottom: 0;
 
-	border-left: 1px solid #5A5A5A;
+	border-left: 1px solid #AAAAAA;
 	margin-left: -1px;
 }
 .scrollable {
@@ -383,12 +383,12 @@ summary:hover .expandbutton,
 	-webkit-overflow-scrolling: touch;
 }
 .ps-room.ps-room-light {
-	background: rgba(0,0,0,.70);
-	color: #DDD;
+	background: rgba(242,247,250,.85);
+	color: black;
 }
 .ps-room.ps-room-opaque {
-	background: rgb(61 61 61 / 50%);
-	color: #DDD;
+	background: #EEF2F5;
+	color: black;
 }
 
 .ps-overlay {
@@ -397,8 +397,8 @@ summary:hover .expandbutton,
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: black;
-	background: rgba(0,0,0,.70);
+	background: #CCCCCC;
+	background: rgba(212, 212, 212, .5);
 
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
@@ -1037,8 +1037,8 @@ p.or:after {
 	right: 0;
 	bottom: 40px;
 	font-size: 10pt;
-	background: rgb(70 70 70 / 50%);
-	color: white;
+	background: rgba(242,247,250,.5);
+	color: black;
 
 	overflow: auto;
 	overflow-x: hidden;
@@ -1052,7 +1052,7 @@ p.or:after {
 	right: 0;
 	min-height: 36px;
 	padding: 3px 4px 0 4px;
-	border-top: 1px solid #3ddddf;
+	border-top: 1px solid #AAAAAA;
 }
 .chat-log .notice,
 .chat-log .chat,
@@ -2110,7 +2110,7 @@ p.or:after {
 .folderlistafter:before,
 .folderlistbefore:before {
 	display: table-cell;
-	background: #484848;
+	background: #d7e3ec;
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -2129,8 +2129,8 @@ p.or:after {
 	padding: 13px 0 0 0;
 	height: 17px;
 	font-size: 9pt;
-	background: #484848;
-	color: white;
+	background: #d7e3ec;
+	color: black;
 	border-right: 1px solid #888888;
 }
 .folderpane .text {
@@ -2285,8 +2285,8 @@ p.or:after {
 }
 .teambar button {
 	display: block;
-	background: #5A6570;
-	color: #F1F1F1;
+	background: #F3F3F3;
+	color: black;
 	border: 1px solid #AAAAAA;
 	padding: 0;
 	margin: -1px 2px 0 0;
@@ -2398,7 +2398,7 @@ p.or:after {
 }
 .setchart {
 	border: 1px solid #999999;
-	background: #5A6570 no-repeat scroll 10px 5px none;
+	background: #DAE5F0 no-repeat scroll 10px 5px none;
 	border-radius: 5px;
 	padding: 2px 0 0 3px;
 	height: 127px;
@@ -2489,9 +2489,9 @@ p.or:after {
 	margin: 2px 2px 1px 1px;
 	font-size: 7pt;
 
-	box-shadow: inset 0px 1px 2px #606060, 1px 1px 0 rgba(0,0,0,1);
-	background: #222527;
-	color: #DDD;
+	box-shadow: inset 0px 1px 2px #CCCCCC, 1px 1px 0 rgba(255,255,255,.6);
+	background: #F8FBFD;
+	color: black;
 }
 .setdetails label, .setstats label {
 	cursor: pointer;
